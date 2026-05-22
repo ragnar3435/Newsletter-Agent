@@ -12,7 +12,7 @@ The system includes a Streamlit interface, supports human-in-the-loop control, a
 
 The system follows a structured agentic workflow:
 
-**Planning → Research → Summarization → Writing → Reflection → Final Output**
+Planning → Research → Summarization → Writing → Reflection → Final Output
 
 ---
 
@@ -61,109 +61,162 @@ The system follows a structured agentic workflow:
 
 ## One-Click Execution
 
-```bash
 streamlit run NewsLetterAgent.py
-System Architecture
+
+---
+
+# System Architecture
+
 User Goal
-   ↓
+↓
 Planning Agent (LLM)
-   ↓
+↓
 Web Research (Tavily API)
-   ↓
+↓
 Article Summarization (LLM)
-   ↓
+↓
 Newsletter Generation (LLM)
-   ↓
+↓
 Critic / Reflection Agent (LLM)
-   ↓
+↓
 Improved Newsletter Output
-   ↓
+↓
 Save + Display + (Optional Approval)
-Example Workflow
-User enters goal:
-"Create a weekly newsletter on latest AI agent news"
-System automatically:
-searches latest news
-extracts 5–7 articles
-summarizes each article
-generates newsletter
-critiques and improves output
-Final output:
-clean markdown newsletter
-saved locally as newsletter.md
-displayed in Streamlit UI
-Tech Stack
-Python
-Streamlit
-LangChain Groq (Llama 3.3 70B)
-Tavily Search API
-Multi-step LLM agent architecture
-Project Structure
+
+---
+
+# Example Workflow
+
+1. User enters goal:
+Create a weekly newsletter on latest AI agent news
+
+2. System automatically:
+- searches latest news
+- extracts 5–7 articles
+- summarizes each article
+- generates newsletter
+- critiques and improves output
+
+3. Final output:
+- clean markdown newsletter
+- saved locally as newsletter.md
+- displayed in Streamlit UI
+
+---
+
+# Tech Stack
+
+- Python
+- Streamlit
+- LangChain Groq (Llama 3.3 70B)
+- Tavily Search API
+- Multi-step LLM agent architecture
+
+---
+
+# Project Structure
+
 NewsLetterAgent.py     Main Streamlit AI agent app
 requirements.txt       Dependencies
 demo video.mp4         Demo of running system
-Installation
-1. Clone repository
+
+---
+
+# Installation
+
+## 1. Clone repository
+
 git clone https://github.com/your-username/newsletter-agent.git
 cd newsletter-agent
-2. Install dependencies
-pip install -r requirements.txt
-3. Add API keys
 
-Set environment variables:
+---
+
+## 2. Install dependencies
+
+pip install -r requirements.txt
+
+---
+
+## 3. Add API keys
 
 GROQ_API_KEY=your_key_here
 TAVILY_API_KEY=your_key_here
-4. Run the application
+
+---
+
+## 4. Run the application
+
 streamlit run NewsLetterAgent.py
-Requirements
+
+---
+
+# Requirements
+
 streamlit
 langchain
 langchain-groq
 tavily-python
 python-dotenv
-Key Design Highlights
-True Agentic System
 
-Implements a multi-step reasoning pipeline instead of a single LLM call.
+---
 
-Reflection-Based Improvement
+# Key Design Highlights
 
-The system evaluates its own output and regenerates an improved version.
+## True Agentic System
 
-Tool-Augmented AI
+Implements multi-step reasoning instead of a single LLM call.
+
+---
+
+## Reflection-Based Improvement
+
+The system evaluates its own output and improves it iteratively.
+
+---
+
+## Tool-Augmented AI
 
 Combines:
+- LLM reasoning
+- Web search tools
+- iterative refinement
 
-LLM reasoning
-Web search tools
-iterative refinement
-Production-Style UI
+---
+
+## Production-Style UI
 
 Streamlit dashboard simulates real-world AI product interfaces.
 
-Demo
+---
+
+# Demo
 
 A short demo video is included in the repository:
 
 demo video.mp4
 
 It shows:
+- user input
+- agent workflow execution
+- newsletter generation
+- final output display
 
-user input
-agent workflow execution
-newsletter generation
-final output display
-Notes
-API keys are required for Groq and Tavily
-The system is designed for educational and demonstration purposes
-No external database is required
-Summary
+---
+
+# Notes
+
+- API keys required for Groq and Tavily
+- Designed for educational/demo purposes
+- No external database required
+
+---
+
+# Summary
 
 This project demonstrates a mini autonomous AI agent system capable of:
 
-multi-step reasoning
-tool usage
-self-evaluation
-structured newsletter generation
-interactive UI execution
+- multi-step reasoning
+- tool usage
+- self-evaluation
+- structured newsletter generation
+- interactive UI execution
