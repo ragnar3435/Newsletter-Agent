@@ -1,16 +1,14 @@
 # AI Newsletter Agent (Autonomous AI System)
 
-An autonomous AI agent that generates a weekly AI agent newsletter by researching latest news, summarizing top articles, and producing a polished markdown report with a reflection-based improvement loop.
+An autonomous AI agent that generates a weekly AI agent newsletter by researching the latest news, summarizing top articles, and producing a structured markdown report with a reflection-based improvement loop.
 
-The system includes a Streamlit interface, supports human-in-the-loop control, and runs fully from a single execution flow.
+The system includes a Streamlit interface, supports human-in-the-loop control, and runs end-to-end from a single execution flow.
 
 ---
 
 # Features
 
 ## Autonomous Agent Pipeline
-
-The system follows a structured agentic workflow:
 
 Planning → Research → Summarization → Writing → Reflection → Final Output
 
@@ -20,46 +18,47 @@ Planning → Research → Summarization → Writing → Reflection → Final Out
 
 - Uses Tavily Search API  
 - Fetches latest AI agent-related news articles  
-- Automatically selects top relevant sources  
+- Automatically selects most relevant sources  
 
 ---
 
 ## LLM-Based Summarization
 
-- Each article is summarized using Groq (Llama 3.3 70B)  
-- Produces concise, structured summaries  
+- Uses Groq (Llama 3.3 70B)
+- Produces structured article summaries  
+- Extracts key insights from each source  
 
 ---
 
 ## Reflection / Critique Loop
 
-- A dedicated critic step evaluates the newsletter  
-- Improves:
-  - clarity
-  - structure
-  - redundancy
-  - engagement  
-- Final output is refined based on feedback  
+- Evaluates generated newsletter quality  
+- Improves clarity, structure, and redundancy  
+- Regenerates improved final output  
 
 ---
 
 ## Human-in-the-Loop Mode
 
-- Supports two modes:
-  - Fully Autonomous Mode  
-  - Human Approval Mode  
+- Fully Autonomous Mode (no approval required)
+- Human Approval Mode (step-by-step review)
 
 ---
 
 ## Streamlit UI Dashboard
 
-- Step-by-step agent visualization  
-- Terminal-style execution logs  
-- Real-time article and newsletter display  
+- Step-by-step execution visibility  
+- Clean terminal-style logs  
+- Displays:
+  - fetched articles
+  - summaries
+  - final newsletter  
 
 ---
 
 ## One-Click Execution
+
+Run the application:
 
 streamlit run NewsLetterAgent.py
 
@@ -69,19 +68,21 @@ streamlit run NewsLetterAgent.py
 
 User Goal
 ↓
-Planning Agent (LLM)
+Planning Agent
 ↓
 Web Research (Tavily API)
 ↓
-Article Summarization (LLM)
+Article Extraction
 ↓
-Newsletter Generation (LLM)
+LLM Summarization
 ↓
-Critic / Reflection Agent (LLM)
+Newsletter Generation
 ↓
-Improved Newsletter Output
+Reflection / Critique
 ↓
-Save + Display + (Optional Approval)
+Final Improved Output
+↓
+Save + Streamlit Display
 
 ---
 
@@ -90,16 +91,16 @@ Save + Display + (Optional Approval)
 1. User enters goal:
 Create a weekly newsletter on latest AI agent news
 
-2. System automatically:
-- searches latest news
+2. System executes:
+- searches web
 - extracts 5–7 articles
 - summarizes each article
 - generates newsletter
-- critiques and improves output
+- improves via reflection loop
 
-3. Final output:
-- clean markdown newsletter
-- saved locally as newsletter.md
+3. Output:
+- markdown newsletter
+- saved as newsletter.md
 - displayed in Streamlit UI
 
 ---
@@ -108,17 +109,18 @@ Create a weekly newsletter on latest AI agent news
 
 - Python
 - Streamlit
-- LangChain Groq (Llama 3.3 70B)
+- LangChain (Groq integration)
+- Llama 3.3 70B
 - Tavily Search API
-- Multi-step LLM agent architecture
+- Autonomous multi-step agent system
 
 ---
 
 # Project Structure
 
-NewsLetterAgent.py     Main Streamlit AI agent app
-requirements.txt       Dependencies
-demo video.mp4         Demo of running system
+NewsLetterAgent.py
+requirements.txt
+demo video.mp4
 
 ---
 
@@ -137,26 +139,22 @@ pip install -r requirements.txt
 
 ---
 
-## 3. Add API keys
+## 3. Environment Variables
 
-Create a `.env` file in the root directory of your project.
-
-Inside the `.env` file, add:
+Create a `.env` file in the root directory:
 
 GROQ_API_KEY=your_groq_api_key_here
 TAVILY_API_KEY=your_tavily_api_key_here
 
-Important notes:
-- Do NOT wrap values in quotes
-- Do NOT add spaces around "="
-- Replace placeholders with your real API keys
-- Keep this file private
-
-Make sure `.env` is added to `.gitignore`.
+Important:
+- no quotes
+- no spaces around "="
+- do not commit .env to GitHub
+- add .env to .gitignore
 
 ---
 
-## 4. Run the application
+## 4. Run application
 
 streamlit run NewsLetterAgent.py
 
@@ -175,60 +173,49 @@ python-dotenv
 # Key Design Highlights
 
 ## True Agentic System
+Multi-step reasoning instead of single LLM call.
 
-Implements multi-step reasoning instead of a single LLM call.
-
----
-
-## Reflection-Based Improvement
-
-The system evaluates its own output and improves it iteratively.
-
----
+## Reflection Loop
+Self-evaluates and improves output quality.
 
 ## Tool-Augmented AI
-
-Combines:
+Uses:
 - LLM reasoning
-- Web search tools
+- web search
 - iterative refinement
 
----
-
-## Production-Style UI
-
-Streamlit dashboard simulates real-world AI product interfaces.
+## Production UI
+Streamlit shows full execution pipeline clearly.
 
 ---
 
 # Demo
 
-A short demo video is included in the repository:
-
 demo video.mp4
 
-It shows:
+Shows:
 - user input
-- agent workflow execution
-- newsletter generation
-- final output display
+- autonomous execution
+- article research
+- summarization
+- final newsletter generation
 
 ---
 
 # Notes
 
-- API keys required for Groq and Tavily
-- Designed for educational/demo purposes
-- No external database required
+- Requires Groq + Tavily API keys
+- No database required
+- Designed for evaluation/demo use
 
 ---
 
 # Summary
 
-This project demonstrates a mini autonomous AI agent system capable of:
+This system demonstrates an autonomous AI agent capable of:
 
-- multi-step reasoning
-- tool usage
-- self-evaluation
+- planning
+- web research
+- summarization
+- reflection-based improvement
 - structured newsletter generation
-- interactive UI execution
