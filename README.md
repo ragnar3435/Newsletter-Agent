@@ -139,8 +139,20 @@ pip install -r requirements.txt
 
 ## 3. Add API keys
 
-GROQ_API_KEY=your_key_here
-TAVILY_API_KEY=your_key_here
+Create a `.env` file in the root directory of your project.
+
+Inside the `.env` file, add:
+
+GROQ_API_KEY=your_groq_api_key_here
+TAVILY_API_KEY=your_tavily_api_key_here
+
+Important notes:
+- Do NOT wrap values in quotes
+- Do NOT add spaces around "="
+- Replace placeholders with your real API keys
+- Keep this file private
+
+Make sure `.env` is added to `.gitignore`.
 
 ---
 
