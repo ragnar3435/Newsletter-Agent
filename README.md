@@ -1,5 +1,3 @@
-# Newsletter-Agent
-
 # AI Newsletter Agent (Autonomous AI System)
 
 An autonomous AI agent that generates a weekly AI agent newsletter by researching latest news, summarizing top articles, and producing a polished markdown report with a reflection-based improvement loop.
@@ -8,66 +6,67 @@ The system includes a Streamlit interface, supports human-in-the-loop control, a
 
 ---
 
-# Features
+# System Architecture
 
-## Autonomous Agent Pipeline
-
-The system follows a structured agentic workflow:
-
-Planning → Research → Summarization → Writing → Reflection → Final Output
-
----
-
-## Live Web Research
-
-- Uses Tavily Search API  
-- Fetches latest AI agent-related news articles  
-- Automatically selects top relevant sources  
-
----
-
-## LLM-Based Summarization
-
-- Each article is summarized using Groq (Llama 3.3 70B)  
-- Produces concise, structured summaries  
+User Goal  
+↓  
+Planning Agent (LLM)  
+↓  
+Web Research (Tavily API)  
+↓  
+Article Summarization (LLM)  
+↓  
+Newsletter Generation (LLM)  
+↓  
+Critic / Reflection Agent (LLM)  
+↓  
+Improved Newsletter Output  
+↓  
+Save + Display + Optional Approval  
 
 ---
 
-## Reflection / Critique Loop
+# Example Workflow
 
-- A dedicated critic step evaluates the newsletter  
-- Improves:
-  - clarity
-  - structure
-  - redundancy
-  - engagement  
-- Final output is refined based on feedback  
+User enters goal:  
+Create a weekly newsletter on latest AI agent news  
 
----
+System automatically:
+- Searches latest news  
+- Extracts 5–7 articles  
+- Summarizes each article  
+- Generates newsletter  
+- Critiques and improves output  
 
-## Human-in-the-Loop Mode
-
-Supports two modes:
-
-- Fully Autonomous Mode  
-- Human Approval Mode  
+Final output:
+- Clean markdown newsletter  
+- Saved locally as newsletter.md  
+- Displayed in Streamlit UI  
 
 ---
 
-## Streamlit UI Dashboard
+# Tech Stack
 
-- Step-by-step agent visualization  
-- Terminal-style execution logs  
-- Real-time article and newsletter display  
+- Python  
+- Streamlit  
+- LangChain Groq (Llama 3.3 70B)  
+- Tavily Search API  
+- Multi-step LLM agent architecture  
 
 ---
 
-## One-Click Execution
+# Project Structure
 
-Run the application using:
+NewsLetterAgent.py → Main Streamlit AI agent app  
+requirements.txt → Dependencies  
+demo video.mp4 → Demo of running system  
+
+---
+
+# Installation
+
+## 1. Clone repository
 
 ```bash
-streamlit run NewsLetterAgent.py
-
-
-
+git clone https://github.com/ragnar3435/newsletter-agent.git
+cd newsletter-agent
